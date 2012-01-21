@@ -9,6 +9,7 @@ class coverflow {
   List<Map> queue;
   var flipping = false;
   bool currPoped = false; 
+  int imagesLoaded=0;
   
   coverflow() {
     queue = new List<Map>();
@@ -258,8 +259,25 @@ class coverflow {
     document.query('#zoom_container').style.display = "block";
   }
   
+  void loadImages() {
+    var dummy = document.query('#dummy');
+    for (int i=1; i<=20; i++) {
+      ImageElement img = new Element.tag('img');      
+      img.on.load.add((var event) {
+        imagesLoaded++;
+        if (imagesLoaded==20) {
+          document.window.setTimeout(() {
+            init();
+          }, 100);
+        }
+      }, false);
+      img.src = "./images/${i}.jpg";
+      dummy.nodes.add(img);
+    }
+  }
+  
   void run() {
-    init() ;
+    loadImages();
   }
 }
 

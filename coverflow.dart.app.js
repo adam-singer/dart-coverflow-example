@@ -505,7 +505,7 @@ ListIterator.prototype.hasNext = function() {
 }
 ListIterator.prototype.next = function() {
   if (!this.hasNext()) {
-    $throw(const$0001);
+    $throw(const$0002);
   }
   return this._array.$index(this._pos++);
 }
@@ -622,7 +622,7 @@ HashMapImplementation.prototype._probeForAdding = function(key) {
     else if ($eq(existingKey, key)) {
       return hash;
     }
-    else if ((insertionIndex < (0)) && (const$0003 == existingKey)) {
+    else if ((insertionIndex < (0)) && (const$0000 == existingKey)) {
       insertionIndex = hash;
     }
     hash = HashMapImplementation._nextProbe(hash, numberOfProbes++, this._keys.get$length());
@@ -665,7 +665,7 @@ HashMapImplementation.prototype._grow = function(newCapacity) {
   for (var i = (0);
    i < capacity; i++) {
     var key = oldKeys.$index(i);
-    if (key == null || key == const$0003) {
+    if (key == null || key == const$0000) {
       continue;
     }
     var value = oldValues.$index(i);
@@ -691,7 +691,7 @@ HashMapImplementation.prototype.get$clear = function() {
 HashMapImplementation.prototype.$setindex = function(key, value) {
   this._ensureCapacity();
   var index = this._probeForAdding(key);
-  if ((this._keys.$index(index) == null) || (this._keys.$index(index) == const$0003)) {
+  if ((this._keys.$index(index) == null) || (this._keys.$index(index) == const$0000)) {
     this._numberOfEntries++;
   }
   this._keys.$setindex(index, key);
@@ -716,7 +716,7 @@ HashMapImplementation.prototype.forEach = function(f) {
   var length = this._keys.get$length();
   for (var i = (0);
    i < length; i++) {
-    if ((this._keys.$index(i) != null) && (this._keys.$index(i) != const$0003)) {
+    if ((this._keys.$index(i) != null) && (this._keys.$index(i) != const$0000)) {
       f(this._keys.$index(i), this._values.$index(i));
     }
   }
@@ -774,7 +774,7 @@ HashMapImplementation_E$E.prototype._probeForAdding = function(key) {
     else if ($eq(existingKey, key)) {
       return hash;
     }
-    else if ((insertionIndex < (0)) && (const$0003 == existingKey)) {
+    else if ((insertionIndex < (0)) && (const$0000 == existingKey)) {
       insertionIndex = hash;
     }
     hash = HashMapImplementation._nextProbe(hash, numberOfProbes++, this._keys.get$length());
@@ -806,7 +806,7 @@ HashMapImplementation_E$E.prototype._grow = function(newCapacity) {
   for (var i = (0);
    i < capacity; i++) {
     var key = oldKeys.$index(i);
-    if (key == null || key == const$0003) {
+    if (key == null || key == const$0000) {
       continue;
     }
     var value = oldValues.$index(i);
@@ -829,7 +829,7 @@ HashMapImplementation_E$E.prototype.clear = function() {
 HashMapImplementation_E$E.prototype.$setindex = function(key, value) {
   this._ensureCapacity();
   var index = this._probeForAdding(key);
-  if ((this._keys.$index(index) == null) || (this._keys.$index(index) == const$0003)) {
+  if ((this._keys.$index(index) == null) || (this._keys.$index(index) == const$0000)) {
     this._numberOfEntries++;
   }
   this._keys.$setindex(index, key);
@@ -839,7 +839,7 @@ HashMapImplementation_E$E.prototype.forEach = function(f) {
   var length = this._keys.get$length();
   for (var i = (0);
    i < length; i++) {
-    if ((this._keys.$index(i) != null) && (this._keys.$index(i) != const$0003)) {
+    if ((this._keys.$index(i) != null) && (this._keys.$index(i) != const$0000)) {
       f(this._keys.$index(i), this._values.$index(i));
     }
   }
@@ -900,14 +900,14 @@ function HashSetIterator(set_) {
 }
 HashSetIterator.prototype.hasNext = function() {
   if (this._nextValidIndex >= this._entries.get$length()) return false;
-  if (this._entries.$index(this._nextValidIndex) == const$0003) {
+  if (this._entries.$index(this._nextValidIndex) == const$0000) {
     this._advance();
   }
   return this._nextValidIndex < this._entries.get$length();
 }
 HashSetIterator.prototype.next = function() {
   if (!this.hasNext()) {
-    $throw(const$0001);
+    $throw(const$0002);
   }
   var res = this._entries.$index(this._nextValidIndex);
   this._advance();
@@ -916,7 +916,7 @@ HashSetIterator.prototype.next = function() {
 HashSetIterator.prototype._advance = function() {
   var length = this._entries.get$length();
   var entry;
-  var deletedKey = const$0003;
+  var deletedKey = const$0000;
   do {
     if (++this._nextValidIndex >= length) break;
     entry = this._entries.$index(this._nextValidIndex);
@@ -935,7 +935,7 @@ function HashSetIterator_E(set_) {
 HashSetIterator_E.prototype._advance = function() {
   var length = this._entries.get$length();
   var entry;
-  var deletedKey = const$0003;
+  var deletedKey = const$0000;
   do {
     if (++this._nextValidIndex >= length) break;
     entry = this._entries.$index(this._nextValidIndex);
@@ -1090,13 +1090,13 @@ function _DoubleLinkedQueueEntrySentinel() {
   this._link(this, this);
 }
 _DoubleLinkedQueueEntrySentinel.prototype.remove = function() {
-  $throw(const$0002);
+  $throw(const$0003);
 }
 _DoubleLinkedQueueEntrySentinel.prototype._asNonSentinelEntry = function() {
   return null;
 }
 _DoubleLinkedQueueEntrySentinel.prototype.get$element = function() {
-  $throw(const$0002);
+  $throw(const$0003);
 }
 _DoubleLinkedQueueEntrySentinel.prototype._asNonSentinelEntry$0 = _DoubleLinkedQueueEntrySentinel.prototype._asNonSentinelEntry;
 _DoubleLinkedQueueEntrySentinel.prototype.remove$0 = _DoubleLinkedQueueEntrySentinel.prototype.remove;
@@ -1203,7 +1203,7 @@ _DoubleLinkedQueueIterator.prototype.hasNext = function() {
 }
 _DoubleLinkedQueueIterator.prototype.next = function() {
   if (!this.hasNext()) {
-    $throw(const$0001);
+    $throw(const$0002);
   }
   this._currentEntry = this._currentEntry._next;
   return this._currentEntry.get$element();
@@ -3483,7 +3483,7 @@ _VariableSizeListIterator_T.prototype.hasNext = function() {
 }
 _VariableSizeListIterator_T.prototype.next = function() {
   if (!this.hasNext()) {
-    $throw(const$0001);
+    $throw(const$0002);
   }
   return this._dom_array.$index(this._dom_pos++);
 }
@@ -3662,6 +3662,9 @@ MediaElementWrappingImplementation._wrap$ctor.prototype = MediaElementWrappingIm
 MediaElementWrappingImplementation.prototype.is$html_html_Element = function(){return true};
 MediaElementWrappingImplementation.prototype.get$src = function() {
   return this._ptr.get$src();
+}
+MediaElementWrappingImplementation.prototype.set$src = function(value) {
+  this._ptr.set$src(value);
 }
 // ********** Code for AudioElementWrappingImplementation **************
 $inherits(AudioElementWrappingImplementation, MediaElementWrappingImplementation);
@@ -3951,6 +3954,9 @@ EmbedElementWrappingImplementation.prototype.get$name = function() {
 EmbedElementWrappingImplementation.prototype.get$src = function() {
   return this._ptr.get$src();
 }
+EmbedElementWrappingImplementation.prototype.set$src = function(value) {
+  this._ptr.set$src(value);
+}
 EmbedElementWrappingImplementation.prototype.get$width = function() {
   return this._ptr.get$width();
 }
@@ -4049,6 +4055,9 @@ IFrameElementWrappingImplementation.prototype.get$name = function() {
 IFrameElementWrappingImplementation.prototype.get$src = function() {
   return this._ptr.get$src();
 }
+IFrameElementWrappingImplementation.prototype.set$src = function(value) {
+  this._ptr.set$src(value);
+}
 IFrameElementWrappingImplementation.prototype.get$width = function() {
   return this._ptr.get$width();
 }
@@ -4076,6 +4085,9 @@ ImageElementWrappingImplementation.prototype.get$naturalWidth = function() {
 ImageElementWrappingImplementation.prototype.get$src = function() {
   return this._ptr.get$src();
 }
+ImageElementWrappingImplementation.prototype.set$src = function(value) {
+  this._ptr.set$src(value);
+}
 ImageElementWrappingImplementation.prototype.get$width = function() {
   return this._ptr.get$width();
 }
@@ -4092,6 +4104,9 @@ InputElementWrappingImplementation.prototype.get$name = function() {
 }
 InputElementWrappingImplementation.prototype.get$src = function() {
   return this._ptr.get$src();
+}
+InputElementWrappingImplementation.prototype.set$src = function(value) {
+  this._ptr.set$src(value);
 }
 InputElementWrappingImplementation.prototype.get$value = function() {
   return this._ptr.get$value();
@@ -5479,6 +5494,9 @@ ScriptElementWrappingImplementation.prototype.is$html_html_Element = function(){
 ScriptElementWrappingImplementation.prototype.get$src = function() {
   return this._ptr.get$src();
 }
+ScriptElementWrappingImplementation.prototype.set$src = function(value) {
+  this._ptr.set$src(value);
+}
 // ********** Code for SelectElementWrappingImplementation **************
 $inherits(SelectElementWrappingImplementation, ElementWrappingImplementation);
 function SelectElementWrappingImplementation() {}
@@ -5518,6 +5536,9 @@ SourceElementWrappingImplementation._wrap$ctor.prototype = SourceElementWrapping
 SourceElementWrappingImplementation.prototype.is$html_html_Element = function(){return true};
 SourceElementWrappingImplementation.prototype.get$src = function() {
   return this._ptr.get$src();
+}
+SourceElementWrappingImplementation.prototype.set$src = function(value) {
+  this._ptr.set$src(value);
 }
 // ********** Code for SpanElementWrappingImplementation **************
 $inherits(SpanElementWrappingImplementation, ElementWrappingImplementation);
@@ -5637,6 +5658,9 @@ TrackElementWrappingImplementation._wrap$ctor.prototype = TrackElementWrappingIm
 TrackElementWrappingImplementation.prototype.is$html_html_Element = function(){return true};
 TrackElementWrappingImplementation.prototype.get$src = function() {
   return this._ptr.get$src();
+}
+TrackElementWrappingImplementation.prototype.set$src = function(value) {
+  this._ptr.set$src(value);
 }
 // ********** Code for UListElementWrappingImplementation **************
 $inherits(UListElementWrappingImplementation, ElementWrappingImplementation);
@@ -7201,6 +7225,9 @@ ElementEventsImplementation.prototype.get$change = function() {
 ElementEventsImplementation.prototype.get$click = function() {
   return this._get("click");
 }
+ElementEventsImplementation.prototype.get$load = function() {
+  return this._get("load");
+}
 ElementEventsImplementation.prototype.click$0 = function() {
   return this.get$click().call$0();
 };
@@ -7356,6 +7383,9 @@ CSSStyleDeclarationWrappingImplementation.prototype.set$opacity = function(value
 }
 CSSStyleDeclarationWrappingImplementation.prototype.get$src = function() {
   return this.getPropertyValue("src");
+}
+CSSStyleDeclarationWrappingImplementation.prototype.set$src = function(value) {
+  this.setProperty("src", value, "");
 }
 CSSStyleDeclarationWrappingImplementation.prototype.get$width = function() {
   return this.getPropertyValue("width");
@@ -7629,16 +7659,16 @@ FrozenElementList.prototype.$index = function(index) {
   return LevelDom.wrapElement(this._ptr.$index(index));
 }
 FrozenElementList.prototype.$setindex = function(index, value) {
-  $throw(const$0000);
+  $throw(const$0001);
 }
 FrozenElementList.prototype.add = function(value) {
-  $throw(const$0000);
+  $throw(const$0001);
 }
 FrozenElementList.prototype.iterator = function() {
   return new FrozenElementListIterator(this);
 }
 FrozenElementList.prototype.addAll = function(collection) {
-  $throw(const$0000);
+  $throw(const$0001);
 }
 FrozenElementList.prototype.removeRange = function(start, length) {
   $throw(const$0008);
@@ -7667,7 +7697,7 @@ function FrozenElementListIterator(_list) {
 }
 FrozenElementListIterator.prototype.next = function() {
   if (!this.hasNext()) {
-    $throw(const$0001);
+    $throw(const$0002);
   }
   return this._list.$index(this._htmlimpl_index++);
 }
@@ -8111,6 +8141,7 @@ function coverflow() {
   this.display_offset = (6);
   this.flipping = false;
   this.currPoped = false;
+  this.imagesLoaded = (0);
   this.queue = new Array();
 }
 coverflow.prototype.createCanvasElement = function(img) {
@@ -8338,8 +8369,28 @@ coverflow.prototype.init = function() {
   html_get$document().query("#zoom_container").get$style().set$left("0px");
   html_get$document().query("#zoom_container").get$style().set$display("block");
 }
+coverflow.prototype.loadImages = function() {
+  var $this = this; // closure support
+  var dummy = html_get$document().query("#dummy");
+  for (var i = (1);
+   i <= (20); i++) {
+    var img = ElementWrappingImplementation.ElementWrappingImplementation$tag$factory("img");
+    img.get$on().get$load().add((function (event) {
+      $this.imagesLoaded++;
+      if ($this.imagesLoaded == (20)) {
+        html_get$document().get$window().setTimeout((function () {
+          $this.init();
+        })
+        , (100));
+      }
+    })
+    , false);
+    img.set$src(("./images/" + i + ".jpg"));
+    dummy.get$nodes().add$1(img);
+  }
+}
 coverflow.prototype.run = function() {
-  this.init();
+  this.loadImages();
 }
 // ********** Code for top level **************
 function main() {
@@ -8411,10 +8462,10 @@ $inheritsMembers(_DoubleLinkedQueueEntrySentinel_KeyValuePair_K$V, DoubleLinkedQ
 //  ********** Globals **************
 function $static_init(){
 }
-var const$0000 = Object.create(UnsupportedOperationException.prototype, {_message: {"value": "", writeable: false}, });
-var const$0001 = Object.create(NoMoreElementsException.prototype, {});
-var const$0002 = Object.create(EmptyQueueException.prototype, {});
-var const$0003 = Object.create(_DeletedKeySentinel.prototype, {});
+var const$0000 = Object.create(_DeletedKeySentinel.prototype, {});
+var const$0001 = Object.create(UnsupportedOperationException.prototype, {_message: {"value": "", writeable: false}, });
+var const$0002 = Object.create(NoMoreElementsException.prototype, {});
+var const$0003 = Object.create(EmptyQueueException.prototype, {});
 var const$0004 = Object.create(IllegalAccessException.prototype, {});
 var const$0005 = _constMap([]);
 var const$0006 = new JSSyntaxRegExp("<(\\w+)");
